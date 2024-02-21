@@ -4,6 +4,13 @@ module.exports = {
   entry: './src/code.ts',
   devtool: 'inline-source-map',
   mode: 'development',
+  devServer: {
+    static: './',
+    port: 8080,
+    historyApiFallback: {
+      index: '/index.html'
+    }
+  },
   module: {
     rules: [
       {
@@ -17,7 +24,8 @@ module.exports = {
     extensions: ['.ts', '.js', '.tsx']
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: '/',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   }
 }
